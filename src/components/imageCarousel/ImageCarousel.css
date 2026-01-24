@@ -1,8 +1,9 @@
 .carousel {
   position: relative;
   width: 100%;
+  aspect-ratio: 16 / 10; /* Perfect car photo ratio */
   overflow: hidden;
-  flex-shrink: 0;
+  background-color: #eee;
 }
 
 .carousel-image {
@@ -16,23 +17,37 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+  background: rgba(255, 255, 255, 0.9); /* Glass effect */
+  color: #333;
   border: none;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+/* Show buttons when hovering over the card */
+.CarCard:hover .carousel-btn {
+  opacity: 1;
 }
 
 .carousel-btn.left {
-  left: 8px;
+  left: 10px;
 }
 
 .carousel-btn.right {
-  right: 8px;
+  right: 10px;
+}
+
+.carousel-btn:hover {
+  background: #fff;
+  color: #d93611;
 }

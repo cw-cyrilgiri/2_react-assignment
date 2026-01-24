@@ -1,0 +1,68 @@
+.skeleton-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Matches CarCard height */
+}
+
+.skeleton-image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #eee;
+}
+
+.skeleton-text-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-title {
+  width: 80%;
+  height: 18px;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.skeleton-info {
+  width: 60%;
+  height: 14px;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.skeleton-price {
+  width: 40%;
+  height: 22px;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.skeleton-button {
+  height: 45px;
+  width: calc(100% - 32px);
+  margin: 0 16px 16px 16px;
+  background: #eee;
+  border-radius: 8px;
+}
+
+/* Shimmer Animation */
+.pulse {
+  animation: pulse-bg 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-bg {
+  0% {
+    background-color: #eee;
+  }
+  50% {
+    background-color: #f5f5f5;
+  }
+  100% {
+    background-color: #eee;
+  }
+}

@@ -1,7 +1,8 @@
 import { useSearchParams } from "react-router-dom";
+import './SortBar.css';
 
 const SORT_OPTIONS = [
-  { label: "Default", value: "" },
+  { label: "Best Match", value: "" },
   { label: "Price - Low to High", value: "priceNumeric-asc" },
   { label: "Price - High to Low", value: "priceNumeric-desc" },
   { label: "Year - Newest to Oldest", value: "makeYear-desc" },
@@ -14,30 +15,30 @@ function SortBar() {
 
   const handleChange = (value) => {
     const params = new URLSearchParams(searchParams);
-
     if (!value) {
       params.delete("sort");
     } else {
       params.set("sort", value);
     }
-
     setSearchParams(params, { replace: true });
   };
 
   return (
-    <div className="sort-bar">
-      <span>Sort By:</span>
-
-      <select
-        value={sortValue}
-        onChange={(e) => handleChange(e.target.value)}
-      >
-        {SORT_OPTIONS.map((opt) => (
-          <option key={opt.value} value={opt.value}>
-            {opt.label}
-          </option>
-        ))}
-      </select>
+    <div className="sort-bar-container">
+      <div className="sort-controls">
+        <span className="sort-label">Sort By:</span>
+        <select
+          className="sort-select"
+          value={sortValue}
+          onChange={(e) => handleChange(e.target.value)}
+        >
+          {SORT_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }

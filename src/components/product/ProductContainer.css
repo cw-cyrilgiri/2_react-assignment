@@ -13,3 +13,12 @@
   text-align: center;
   padding: 32px;
 }
+
+.loading-bottom {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: #666;
+  grid-column: span 2; /* Spans across the 2-car grid */
+  font-weight: 500;
+}

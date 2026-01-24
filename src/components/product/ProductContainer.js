@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { fetchStocks } from "../../redux/data/data.thunk";
 import CarCard from "./CarCard";
 import SortBar from "./SortBar";
+import Spinner from "../common/Spinner"; // Import your new spinner
 import { resetStocks } from "../../redux/data/data.action";
 
 function ProductContainer() {
@@ -17,18 +18,11 @@ function ProductContainer() {
 
   const observerRef = useRef(null);
 
-  /* ===============================
-     1️⃣ FETCH ON FILTER CHANGE
-     (Exclude sort!)
-  =============================== */
   useEffect(() => {
     dispatch(resetStocks());
     dispatch(fetchStocks({ append: false, searchParams }));
-  }, [searchParams.toString()]);
+  }, [searchParams.toString(), dispatch]);
 
-  /* ===============================
-     2️⃣ UI SORT (URL-based)
-  =============================== */
   const sortedList = useMemo(() => {
     const sort = searchParams.get("sort");
     if (!sort) return stocks;
@@ -42,14 +36,9 @@ function ProductContainer() {
     });
   }, [stocks, searchParams]);
 
-  console.log("sorted", sortedList);
-  /* ===============================
-     3️⃣ INFINITE SCROLL
-  =============================== */
   const lastItemRef = useCallback(
     (node) => {
       if (loading || !nextPageUrl || !hasMore) return;
-
       if (observerRef.current) observerRef.current.disconnect();
 
       observerRef.current = new IntersectionObserver(
@@ -63,17 +52,19 @@ function ProductContainer() {
 
       if (node) observerRef.current.observe(node);
     },
-    [loading, nextPageUrl],
+    [loading, nextPageUrl, hasMore, dispatch],
   );
 
   return (
-    <div className="ProductContainer">
+    <div className="ProductContainer" style={{ position: "relative" }}>
       <SortBar />
+
+      {/* Show full overlay spinner ONLY during initial fetch/filter change */}
+      {loading && sortedList.length === 0 && <Spinner />}
 
       <div className="PC-container">
         {sortedList.map((car, index) => {
           const isLast = index === sortedList.length - 1;
-          console.log("rendering", car.profileId);
           return (
             <div key={car.profileId} ref={isLast ? lastItemRef : null}>
               <CarCard car={car} />
@@ -82,7 +73,10 @@ function ProductContainer() {
         })}
       </div>
 
-      {loading && <p className="loading">Loading…</p>}
+      {/* Show simple text loader at the bottom for Infinite Scroll */}
+      {loading && sortedList.length > 0 && (
+        <p className="loading-bottom">Loading more cars...</p>
+      )}
 
       {!loading && sortedList.length === 0 && (
         <p className="empty">No cars found</p>
