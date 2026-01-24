@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./FilterAccordian.css";
 
-function FilterAccordian({ title, children, defaultOpen = true }) {
+function FilterAccordian({ title, children, defaultOpen = false }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
