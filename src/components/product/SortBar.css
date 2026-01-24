@@ -1,0 +1,14 @@
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid grey; /* Blue border from your image */
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.sort-select:focus {
+    border: 1px solid lightblue;
+}
