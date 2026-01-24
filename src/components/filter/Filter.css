@@ -1,0 +1,235 @@
+/* ==========================================
+   SIDEBAR CONTAINER
+   ========================================== */
+.FilterContainer {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  position: sticky;
+  top: 20px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  overflow: hidden;
+  max-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.filter-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-header-left img{
+  width: 18px;
+}
+
+
+.filter-header h2 {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+  color: #404040;
+  line-height: 1;
+}
+
+.clear-all-btn {
+  border: none;
+  background: none;
+  color: #0271bc;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.clear-all-btn:hover {
+  text-decoration: underline;
+  color: #015a96;
+}
+
+/* ==========================================
+   SCROLL WRAPPER & DIVIDERS
+   ========================================== */
+.filter-content-scroll {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Divider line between accordions */
+.filter-content-scroll > div:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* ==========================================
+   CHECKBOX FILTERS (Fuel & Make)
+   ========================================== */
+.filter-checkbox-label {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.filter-checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  accent-color: #0271bc; 
+  cursor: pointer;
+}
+
+.checkbox-text {
+  font-size: 14px;
+  color: #404040;
+  user-select: none;
+}
+
+/* ==========================================
+   CITY FILTER (Pills)
+   ========================================== */
+.city-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 2px;
+}
+
+.city-pill {
+  padding: 6px 14px;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #404040;
+  background-color: #fff;
+  transition: all 0.2s ease;
+}
+
+.city-pill input[type="radio"] {
+  display: none;
+}
+
+.city-pill.active {
+  background-color: #0271bc;
+  color: #ffffff;
+  border-color: #0271bc;
+}
+
+/* ==========================================
+   BUDGET FILTER (Slider & Inputs)
+   ========================================== */
+.budget-input-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.input-group label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  padding: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #404040;
+  outline: none;
+}
+
+.range-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  margin: 20px 0;
+}
+
+.range-input {
+  position: absolute;
+  width: 100%;
+  top: -7px;
+  background: none;
+  pointer-events: none;
+  appearance: none;
+  margin: 0;
+  z-index: 3;
+}
+
+.range-input::-webkit-slider-thumb {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 2px solid #0271bc;
+  background-color: #fff;
+  cursor: pointer;
+  pointer-events: auto;
+  appearance: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.slider-base-track {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: #e5e5e5;
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.slider-filled-track {
+  position: absolute;
+  height: 4px;
+  background-color: #0271bc;
+  z-index: 2;
+  border-radius: 2px;
+}
+
+.budget-display-label {
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0271bc;
+  margin-top: 15px;
+}
+
+/* ==========================================
+   GLOBAL UTILITIES
+   ========================================== */
+.no-results-text {
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.filter-content-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.filter-content-scroll::-webkit-scrollbar-thumb {
+  background: #e5e5e5;
+  border-radius: 10px;
+}

@@ -24,7 +24,7 @@ function ProductContainer() {
   useEffect(() => {
     dispatch(resetStocks());
     dispatch(fetchStocks({ append: false, searchParams }));
-  }, []);
+  }, [searchParams.toString()]);
 
   /* ===============================
      2️⃣ UI SORT (URL-based)
@@ -42,7 +42,7 @@ function ProductContainer() {
     });
   }, [stocks, searchParams]);
 
-  console.log("sorted" , sortedList)
+  console.log("sorted", sortedList);
   /* ===============================
      3️⃣ INFINITE SCROLL
   =============================== */

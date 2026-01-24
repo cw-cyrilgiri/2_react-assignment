@@ -1,33 +1,67 @@
+/* Container for a single accordion section */
 .FilterAccordion {
-  border-top: 1px solid grey;
+  width: 100%;
+  background: #fff;
 }
 
+/* Header button styling */
 .FilterAccordion-header {
   width: 100%;
   background: none;
   border: none;
-  padding: 12px 8px;
+  padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.FilterAccordion-header:hover {
+  background-color: #f9f9f9;
 }
 
 .FilterAccordion-title {
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #404040;
 }
 
 .FilterAccordion-arrow {
-  font-size: 12px;
-  transition: transform 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  transition: transform 0.3s ease;
 }
 
 .FilterAccordion-arrow.open {
   transform: rotate(180deg);
 }
 
+/* The collapsible container */
+.FilterAccordion-collapse {
+  display: none;
+  overflow: hidden;
+}
+
+.FilterAccordion-collapse.show {
+  display: block;
+}
+
+/* Internal content area with fixed height as requested */
 .FilterAccordion-content {
-  padding: 8px 8px 12px;
+  padding: 0 16px 16px 16px;
+  max-height: 280px; 
+  overflow-y: auto;
+}
+
+/* Scrollbar styling for accordion lists */
+.FilterAccordion-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.FilterAccordion-content::-webkit-scrollbar-thumb {
+  background: #e5e5e5;
+  border-radius: 10px;
 }

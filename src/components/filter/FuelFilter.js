@@ -12,11 +12,17 @@ const FUEL_TYPES = [
 
 function FuelFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const selected = getArrayParam(searchParams, "fuel");
+  
+  // getArrayParam ensures we get an array of IDs from the URL
+  const selected = getArrayParam(searchParams, "fuel").map(Number);
 
   const toggle = (id) => {
     const next = new Set(selected);
-    next.has(id) ? next.delete(id) : next.add(id);
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+    }
 
     const params = new URLSearchParams(searchParams);
     setArrayParam(params, "fuel", [...next]);
@@ -24,15 +30,15 @@ function FuelFilter() {
   };
 
   return (
-    <div>
+    <div className="fuel-filter-group">
       {FUEL_TYPES.map((fuel) => (
-        <label key={fuel.id}>
+        <label key={fuel.id} className="filter-checkbox-label">
           <input
             type="checkbox"
             checked={selected.includes(fuel.id)}
             onChange={() => toggle(fuel.id)}
           />
-          {fuel.label}
+          <span className="checkbox-text">{fuel.label}</span>
         </label>
       ))}
     </div>
