@@ -6,12 +6,13 @@ const initialState = {
   nextPageUrl: null,
   totalCount: 0,
   loading: false,
-  error: null,
+  Stockerror: null,
   hasMore: true,
 
   cities: [],
   makes: [],
   metadataLoaded: false,
+  metadataError: null,
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -22,7 +23,7 @@ export default function dataReducer(state = initialState, action) {
         stocks: [],
         nextPageUrl: null,
         totalCount: 0,
-        error: null,
+        Stockerror: null,
       };
 
     case types.FETCH_STOCKS_START:
@@ -57,8 +58,14 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        Stockerror: action.payload,
         hasMore: false,
+      };
+
+    case types.FETCH_METADATA_ERROR:
+      return {
+        ...state,
+        metadataError: action.payload,
       };
 
     default:

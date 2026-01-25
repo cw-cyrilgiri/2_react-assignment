@@ -7,12 +7,13 @@ import CarCard from './CarCard';
 import SortBar from './SortBar';
 import Spinner from '../common/Spinner'; // Import your new spinner
 import { resetStocks } from '../../redux/data/data.action';
+import Error from '../common/Error';
 
 function ProductContainer() {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
-  const { stocks, loading, nextPageUrl, hasMore } = useSelector(
+  const { stocks, loading, nextPageUrl, hasMore, Stockerror } = useSelector(
     (state) => state.data,
   );
 
@@ -73,6 +74,7 @@ function ProductContainer() {
         })}
       </div>
 
+      {Stockerror && <Error error={Stockerror} />}
       {/* Show simple text loader at the bottom for Infinite Scroll */}
       {loading && sortedList.length > 0 && (
         <p className="loading-bottom">Loading more cars...</p>

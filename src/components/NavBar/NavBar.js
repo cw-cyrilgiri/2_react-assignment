@@ -1,4 +1,7 @@
 import './NavBar.css';
+import magnifierIco from '../../assets/magnifier.svg';
+import locationIco from '../../assets/location.svg';
+import userIco from '../../assets/user.svg';
 
 const Navbar = () => {
   return (
@@ -23,11 +26,17 @@ const Navbar = () => {
         <div className="navbar-actions">
           <div className="search-container">
             <input type="text" placeholder="Search" />
-            <span className="search-icon">🔍</span>
+            <span className="search-icon">
+              <img src={magnifierIco} alt="search" />
+            </span>
           </div>
           <div className="navbar-icons">
-            <span className="location-icon">📍</span>
-            <span className="user-icon">👤</span>
+            <span className="location-icon">
+              <img src={locationIco} alt="search" />
+            </span>
+            <span className="user-icon">
+              <img src={userIco} alt="search" />
+            </span>
           </div>
         </div>
       </div>

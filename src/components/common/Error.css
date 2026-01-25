@@ -1,0 +1,19 @@
+.error-box {
+  margin: 24px auto;
+  padding: 16px 20px;
+
+  max-width: 520px;
+
+  background: #fff5f5;
+  border: 1px solid #ffb3b3;
+  border-left: 5px solid #e53935;
+
+  color: #b71c1c;
+  font-size: 14px;
+  font-weight: 500;
+
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(229, 57, 53, 0.08);
+
+  text-align: center;
+}

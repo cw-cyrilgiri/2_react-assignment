@@ -5,18 +5,29 @@ export const fetchMetadata = () => async (dispatch, getState) => {
   const { metadataLoaded } = getState().data;
   if (metadataLoaded) return;
 
-  const [citiesRes, makesRes] = await Promise.all([
-    fetch('https://stg.carwale.com/api/cities'),
-    fetch('https://stg.carwale.com/api/v2/makes/?type=new'),
-  ]);
+  try {
+    const [citiesRes, makesRes] = await Promise.all([
+      fetch('https://stg.carwale.com/api/cities'),
+      fetch('https://stg.carwale.com/api/v2/makes/?type=new'),
+    ]);
 
-  dispatch({
-    type: types.FETCH_METADATA_SUCCESS,
-    payload: {
-      cities: await citiesRes.json(),
-      makes: await makesRes.json(),
-    },
-  });
+    if (!citiesRes.ok || !makesRes.ok) {
+      throw new Error(`Failed to load metadata`);
+    }
+
+    dispatch({
+      type: types.FETCH_METADATA_SUCCESS,
+      payload: {
+        cities: await citiesRes.json(),
+        makes: await makesRes.json(),
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: types.FETCH_METADATA_ERROR,
+      payload: error.message,
+    });
+  }
 };
 
 export const fetchStocks =
@@ -33,6 +44,9 @@ export const fetchStocks =
           : `https://stg.carwale.com/api/stocks?${buildQueryParams(searchParams)}`;
 
       const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: failed to fetch stocks`);
+      }
       const data = await res.json();
 
       dispatch({

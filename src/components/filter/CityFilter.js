@@ -8,7 +8,7 @@ function CityFilter({ cities = [] }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const debouncedSearch = useDebounce(searchTerm, 100);
+  const debouncedSearch = useDebounce(searchTerm, 300);
   const selectedCity = searchParams.get('city');
 
   const onChange = (cityId) => {
@@ -47,6 +47,9 @@ function CityFilter({ cities = [] }) {
           </label>
         ))}
       </div>
+      {filteredCities.length === 0 && (
+        <p className="no-results-text">No City found</p>
+      )}
     </div>
   );
 }
