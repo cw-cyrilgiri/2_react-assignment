@@ -1,5 +1,5 @@
-import { act } from "react";
-import * as types from "./data.types";
+import { act } from 'react';
+import * as types from './data.types';
 
 const initialState = {
   stocks: [],
@@ -54,7 +54,12 @@ export default function dataReducer(state = initialState, action) {
       };
 
     case types.FETCH_STOCKS_ERROR:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        hasMore: false,
+      };
 
     default:
       return state;

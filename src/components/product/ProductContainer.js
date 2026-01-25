@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import "./ProductContainer.css";
-import { useSearchParams } from "react-router-dom";
-import { useCallback, useEffect, useMemo, useRef } from "react";
-import { fetchStocks } from "../../redux/data/data.thunk";
-import CarCard from "./CarCard";
-import SortBar from "./SortBar";
-import Spinner from "../common/Spinner"; // Import your new spinner
-import { resetStocks } from "../../redux/data/data.action";
+import { useDispatch, useSelector } from 'react-redux';
+import './ProductContainer.css';
+import { useSearchParams } from 'react-router-dom';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { fetchStocks } from '../../redux/data/data.thunk';
+import CarCard from './CarCard';
+import SortBar from './SortBar';
+import Spinner from '../common/Spinner'; // Import your new spinner
+import { resetStocks } from '../../redux/data/data.action';
 
 function ProductContainer() {
   const dispatch = useDispatch();
@@ -24,15 +24,15 @@ function ProductContainer() {
   }, [searchParams.toString(), dispatch]);
 
   const sortedList = useMemo(() => {
-    const sort = searchParams.get("sort");
+    const sort = searchParams.get('sort');
     if (!sort) return stocks;
 
-    const [field, order] = sort.split("-");
+    const [field, order] = sort.split('-');
 
     return [...stocks].sort((a, b) => {
       const aVal = Number(a[field]) || 0;
       const bVal = Number(b[field]) || 0;
-      return order === "asc" ? aVal - bVal : bVal - aVal;
+      return order === 'asc' ? aVal - bVal : bVal - aVal;
     });
   }, [stocks, searchParams]);
 
@@ -47,7 +47,7 @@ function ProductContainer() {
             dispatch(fetchStocks({ append: true }));
           }
         },
-        { rootMargin: "200px" },
+        { rootMargin: '200px' },
       );
 
       if (node) observerRef.current.observe(node);
@@ -56,7 +56,7 @@ function ProductContainer() {
   );
 
   return (
-    <div className="ProductContainer" style={{ position: "relative" }}>
+    <div className="ProductContainer" style={{ position: 'relative' }}>
       <SortBar />
 
       {/* Show full overlay spinner ONLY during initial fetch/filter change */}

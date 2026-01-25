@@ -8,7 +8,7 @@
   position: sticky;
   top: 90px;
   background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   max-height: calc(100vh - 40px);
   display: flex;
@@ -32,10 +32,9 @@
   gap: 10px;
 }
 
-.filter-header-left img{
+.filter-header-left img {
   width: 18px;
 }
-
 
 .filter-header h2 {
   font-weight: 700;
@@ -84,11 +83,11 @@
   cursor: pointer;
 }
 
-.filter-checkbox-label input[type="checkbox"] {
+.filter-checkbox-label input[type='checkbox'] {
   width: 18px;
   height: 18px;
   margin-right: 12px;
-  accent-color: #0271bc; 
+  accent-color: #0271bc;
   cursor: pointer;
 }
 
@@ -119,7 +118,7 @@
   transition: all 0.2s ease;
 }
 
-.city-pill input[type="radio"] {
+.city-pill input[type='radio'] {
   display: none;
 }
 
@@ -187,7 +186,7 @@
   cursor: pointer;
   pointer-events: auto;
   appearance: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .slider-base-track {

@@ -52,7 +52,7 @@
 /* Internal content area with fixed height as requested */
 .FilterAccordion-content {
   padding: 0 16px 16px 16px;
-  max-height: 280px; 
+  max-height: 280px;
   overflow-y: auto;
 }
 

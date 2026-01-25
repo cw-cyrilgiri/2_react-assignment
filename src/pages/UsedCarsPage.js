@@ -1,6 +1,6 @@
-import FilterContainer from "../components/filter/FilterContainer";
-import ProductContainer from "../components/product/ProductContainer";
-import './UsedCarsPage.css'
+import FilterContainer from '../components/filter/FilterContainer';
+import ProductContainer from '../components/product/ProductContainer';
+import './UsedCarsPage.css';
 
 function UsedCarsPage() {
   return (

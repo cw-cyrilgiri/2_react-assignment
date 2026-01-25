@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
-import filterIcon from "../../assets/filter.svg";
-import { fetchMetadata } from "../../redux/data/data.thunk";
-import FilterAccordian from "../accordian/FilterAccordian";
-import FuelFilter from "./FuelFilter";
-import CityFilter from "./CityFilter";
-import MakeFilter from "./MakeFilter";
-import BudgetFilter from "./BudgetFilter";
-import "./Filter.css";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import filterIcon from '../../assets/filter.svg';
+import { fetchMetadata } from '../../redux/data/data.thunk';
+import FilterAccordian from '../accordian/FilterAccordian';
+import FuelFilter from './FuelFilter';
+import CityFilter from './CityFilter';
+import MakeFilter from './MakeFilter';
+import BudgetFilter from './BudgetFilter';
+import './Filter.css';
 
 function FilterContainer() {
   const dispatch = useDispatch();

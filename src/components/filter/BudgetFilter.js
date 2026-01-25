@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useDebounce } from "../../hooks/useDebounce";
-import "./Filter.css";
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useDebounce } from '../../hooks/useDebounce';
+import './Filter.css';
 
 const UI_MAX = 50;
 
 function BudgetFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const budgetParam = searchParams.get("budget") || "";
+  const budgetParam = searchParams.get('budget') || '';
 
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(UI_MAX);
@@ -18,7 +18,7 @@ function BudgetFilter() {
       setMax(UI_MAX);
       return;
     }
-    const [bMin, bMax] = budgetParam.split("-");
+    const [bMin, bMax] = budgetParam.split('-');
     setMin(Number(bMin || 0));
     setMax(bMax ? Number(bMax) : UI_MAX);
   }, [budgetParam]);
@@ -27,11 +27,11 @@ function BudgetFilter() {
   const debouncedMax = useDebounce(max, 400);
 
   useEffect(() => {
-    const currentUrlBudget = `${debouncedMin}-${debouncedMax === UI_MAX ? "" : debouncedMax}`;
+    const currentUrlBudget = `${debouncedMin}-${debouncedMax === UI_MAX ? '' : debouncedMax}`;
     if (currentUrlBudget === budgetParam) return;
 
     const params = new URLSearchParams(searchParams);
-    params.set("budget", currentUrlBudget);
+    params.set('budget', currentUrlBudget);
     setSearchParams(params);
   }, [debouncedMin, debouncedMax, setSearchParams, budgetParam]);
 
@@ -43,17 +43,17 @@ function BudgetFilter() {
       <div className="budget-input-row">
         <div className="input-group">
           <label>Min (Lakh)</label>
-          <input 
-            type="number" 
-            value={min} 
+          <input
+            type="number"
+            value={min}
             onChange={(e) => setMin(Math.min(Number(e.target.value), max - 1))}
           />
         </div>
         <div className="input-group">
           <label>Max (Lakh)</label>
-          <input 
-            type="number" 
-            value={max} 
+          <input
+            type="number"
+            value={max}
             onChange={(e) => setMax(Math.max(Number(e.target.value), min + 1))}
           />
         </div>
@@ -66,7 +66,7 @@ function BudgetFilter() {
           max={UI_MAX}
           value={min}
           className="range-input"
-          style={{ zIndex: min > UI_MAX - 10 ? "5" : "3" }}
+          style={{ zIndex: min > UI_MAX - 10 ? '5' : '3' }}
           onChange={(e) => setMin(Math.min(Number(e.target.value), max - 1))}
         />
         <input
@@ -75,22 +75,22 @@ function BudgetFilter() {
           max={UI_MAX}
           value={max}
           className="range-input"
-          style={{ zIndex: "4" }}
+          style={{ zIndex: '4' }}
           onChange={(e) => setMax(Math.max(Number(e.target.value), min + 1))}
         />
-        
+
         <div className="slider-base-track"></div>
-        <div 
+        <div
           className="slider-filled-track"
           style={{
             left: `${getPercent(min)}%`,
-            width: `${getPercent(max) - getPercent(min)}%`
+            width: `${getPercent(max) - getPercent(min)}%`,
           }}
         ></div>
       </div>
 
       <div className="budget-display-label">
-        ₹ {min}L – {max === UI_MAX ? "Max" : `${max}L`}
+        ₹ {min}L – {max === UI_MAX ? 'Max' : `${max}L`}
       </div>
     </div>
   );

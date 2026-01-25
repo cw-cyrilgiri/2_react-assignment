@@ -1,17 +1,12 @@
-import "./ImageCarousel.css";
-import placeholderImage from '../../assets/placeholder.svg'
-import { useState } from "react";
+import './ImageCarousel.css';
+import placeholderImage from '../../assets/placeholder.svg';
+import { useState } from 'react';
 
 function ImageCarousel({ images = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!images.length)
-    return (
-      <img
-        className="carousel-image"
-        src={placeholderImage}
-      />
-    );
+    return <img className="carousel-image" src={placeholderImage} />;
 
   const prev = () => {
     setCurrentIndex((i) => Math.max(i - 1, 0));
