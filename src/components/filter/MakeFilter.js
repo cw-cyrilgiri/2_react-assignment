@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getArrayParam, setArrayParam } from '../../utils/query';
 import { useDebounce } from '../../hooks/useDebounce';
@@ -9,26 +9,27 @@ function MakeFilter({ makes = [] }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const selected = getArrayParam(searchParams, 'car');
+  const selected = getArrayParam(searchParams, 'car').map(Number);
   const debouncedSearch = useDebounce(searchTerm, 300);
 
   const toggle = (id) => {
+    const numericId = Number(id);
     const next = new Set(selected);
 
-    const stringId = String(id);
-
-    next.has(stringId) ? next.delete(stringId) : next.add(stringId);
+    if (next.has(numericId)) {
+      next.delete(numericId);
+    } else {
+      next.add(numericId);
+    }
 
     const params = new URLSearchParams(searchParams);
-    setArrayParam(params, 'car', [...next]);
+    setArrayParam(params, 'car', Array.from(next));
     setSearchParams(params);
   };
 
-  const filteredMakes = useMemo(() => {
-    return makes.filter((make) =>
-      make.makeName.toLowerCase().includes(debouncedSearch.toLowerCase()),
-    );
-  }, [debouncedSearch, makes]);
+  const filteredMakes = makes.filter((make) =>
+    make.makeName.toLowerCase().includes(debouncedSearch.toLowerCase()),
+  );
 
   return (
     <div className="make-filter-container">
@@ -43,7 +44,7 @@ function MakeFilter({ makes = [] }) {
           <label key={make.makeId} className="filter-checkbox-label">
             <input
               type="checkbox"
-              checked={selected.includes(String(make.makeId))}
+              checked={selected.includes(Number(make.makeId))}
               onChange={() => toggle(make.makeId)}
             />
             <span className="checkbox-text">{make.makeName}</span>

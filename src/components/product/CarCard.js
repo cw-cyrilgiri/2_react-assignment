@@ -1,5 +1,6 @@
 import './CarCard.css';
 import ImageCarousel from '../imageCarousel/ImageCarousel';
+import React, { memo } from 'react';
 
 function CarCard({ car }) {
   return (
@@ -28,4 +29,5 @@ function CarCard({ car }) {
   );
 }
 
-export default CarCard;
+export default React.memo(CarCard);
+// export default CarCard;
