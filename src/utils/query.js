@@ -1,6 +1,6 @@
 export function getArrayParam(searchParams, key) {
   const value = searchParams.get(key);
-  return value ? value.split('+').map(Number) : [];
+  return value ? value.split(/[ +]/).map(Number) : [];
 }
 
 export function setArrayParam(searchParams, key, values) {
