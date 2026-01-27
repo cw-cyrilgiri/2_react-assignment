@@ -1,9 +1,8 @@
-// utils/buildApiQuery.js
 export const buildQueryParams = (searchParams) => {
   const params = {};
 
   if (searchParams.get('fuel')) {
-    params.fuel = searchParams.get('fuel'); // already "1+6+5"
+    params.fuel = searchParams.get('fuel');
   }
 
   if (searchParams.get('city')) {

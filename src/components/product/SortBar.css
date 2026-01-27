@@ -1,6 +1,6 @@
 .sort-bar-container {
   display: flex;
-  /* Pushes the sort controls to the right side of the container */
+
   justify-content: flex-end;
   align-items: center;
   padding: 12px 16px;
@@ -24,7 +24,7 @@
 
 .sort-select {
   padding: 6px 36px 6px 12px;
-  border: 1px solid #404040; /* Darker border like the image */
+  border: 1px solid #404040;
   border-radius: 10px;
   font-size: 15px;
   color: #404040;
@@ -33,12 +33,10 @@
   outline: none;
   min-width: 160px;
 
-  /* Remove default arrow to use the CarWale chevron */
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 
-  /* Custom Chevron Arrow from the image */
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23404040' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
@@ -47,10 +45,9 @@
 }
 
 .sort-select:focus {
-  border-color: #0271bc; /* CarWale Blue on focus */
+  border-color: #0271bc;
 }
 
-/* Style for the options inside the dropdown */
 .sort-select option {
   padding: 10px;
   font-size: 14px;

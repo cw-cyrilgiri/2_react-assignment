@@ -68,9 +68,8 @@
   flex-grow: 1;
 }
 
-/* Divider line between accordions */
 .filter-content-scroll > div:not(:last-child) {
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 /* ==========================================

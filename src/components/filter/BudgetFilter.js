@@ -35,7 +35,6 @@ function BudgetFilter() {
     setSearchParams(params);
   }, [debouncedMin, debouncedMax, setSearchParams, budgetParam]);
 
-  // Calculate percentage for the blue highlight track
   const getPercent = (value) => Math.round((value / UI_MAX) * 100);
 
   return (

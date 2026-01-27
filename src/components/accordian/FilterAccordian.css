@@ -1,10 +1,8 @@
-/* Container for a single accordion section */
 .FilterAccordion {
   width: 100%;
   background: #fff;
 }
 
-/* Header button styling */
 .FilterAccordion-header {
   width: 100%;
   background: none;
@@ -39,7 +37,6 @@
   transform: rotate(180deg);
 }
 
-/* The collapsible container */
 .FilterAccordion-collapse {
   display: none;
   overflow: hidden;
@@ -49,14 +46,12 @@
   display: block;
 }
 
-/* Internal content area with fixed height as requested */
 .FilterAccordion-content {
   padding: 0 16px 16px 16px;
   max-height: 280px;
   overflow-y: auto;
 }
 
-/* Scrollbar styling for accordion lists */
 .FilterAccordion-content::-webkit-scrollbar {
   width: 4px;
 }

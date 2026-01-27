@@ -9,13 +9,12 @@ function MakeFilter({ makes = [] }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Get selected IDs from URL
   const selected = getArrayParam(searchParams, 'car');
   const debouncedSearch = useDebounce(searchTerm, 300);
 
   const toggle = (id) => {
     const next = new Set(selected);
-    // Ensure we compare strings/numbers correctly based on your data type
+
     const stringId = String(id);
 
     next.has(stringId) ? next.delete(stringId) : next.add(stringId);
@@ -25,7 +24,6 @@ function MakeFilter({ makes = [] }) {
     setSearchParams(params);
   };
 
-  // Filter the brand list based on search input
   const filteredMakes = useMemo(() => {
     return makes.filter((make) =>
       make.makeName.toLowerCase().includes(debouncedSearch.toLowerCase()),

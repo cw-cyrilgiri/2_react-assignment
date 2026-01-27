@@ -13,7 +13,6 @@ const FUEL_TYPES = [
 function FuelFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // getArrayParam ensures we get an array of IDs from the URL
   const selected = getArrayParam(searchParams, 'fuel').map(Number);
 
   const toggle = (id) => {

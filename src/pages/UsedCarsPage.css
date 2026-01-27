@@ -1,4 +1,3 @@
-/* UsedCarsPage.css */
 .used-cars-page {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -6,14 +5,13 @@
   max-width: 1224px;
   margin: 0 auto;
   padding: 20px 16px;
-  background-color: #f8f8f8; /* CarWale light grey background */
+  background-color: #f8f8f8;
   align-items: start;
 }
 
-/* ProductContainer.css */
 .PC-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Exactly 2 cars per row */
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-top: 16px;
 }

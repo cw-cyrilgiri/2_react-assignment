@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { fetchStocks } from '../../redux/data/data.thunk';
 import CarCard from './CarCard';
 import SortBar from './SortBar';
-import Spinner from '../common/Spinner'; // Import your new spinner
+import Spinner from '../common/Spinner'; 
 import { resetStocks } from '../../redux/data/data.action';
 import Error from '../common/Error';
 

@@ -5,7 +5,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Matches CarCard height */
+  height: 100%;
 }
 
 .skeleton-image {
@@ -50,7 +50,6 @@
   border-radius: 8px;
 }
 
-/* Shimmer Animation */
 .pulse {
   animation: pulse-bg 1.5s infinite ease-in-out;
 }

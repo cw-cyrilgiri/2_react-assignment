@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../../hooks/useDebounce';
 import FilterSearch from '../common/FilterSearch';
-import './Filter.css'; // Centralized filter styles
+import './Filter.css';
 
 function CityFilter({ cities = [] }) {
   const [searchParams, setSearchParams] = useSearchParams();
