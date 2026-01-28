@@ -9,7 +9,7 @@ function MakeFilter({ makes = [] }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const selected = getArrayParam(searchParams, 'car').map(Number);
+  const selected = getArrayParam(searchParams, 'car');
   const debouncedSearch = useDebounce(searchTerm, 300);
 
   const toggle = (id) => {
