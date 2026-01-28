@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { fetchStocks } from '../../redux/data/data.thunk';
 import CarCard from './CarCard';
 import SortBar from './SortBar';
-import Spinner from '../common/Spinner'; 
+import Spinner from '../common/Spinner';
 import { resetStocks } from '../../redux/data/data.action';
 import Error from '../common/Error';
 
@@ -13,9 +13,11 @@ function ProductContainer() {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
-  const { stocks, loading, nextPageUrl, hasMore, Stockerror } = useSelector(
-    (state) => state.data,
-  );
+  const stocks = useSelector((state) => state.data.stocks);
+  const loading = useSelector((state) => state.data.loading);
+  const nextPageUrl = useSelector((state) => state.data.nextPageUrl);
+  const hasMore = useSelector((state) => state.data.hasMore);
+  const Stockerror = useSelector((state) => state.data.Stockerror);
 
   const observerRef = useRef(null);
 

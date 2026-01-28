@@ -14,7 +14,9 @@ function FilterContainer() {
   const dispatch = useDispatch();
   const [_, setSearchParams] = useSearchParams();
 
-  const { makes, cities, metadataLoaded } = useSelector((state) => state.data);
+  const makes = useSelector((state) => state.data.makes);
+  const cities = useSelector((state) => state.data.cities);
+  const metadataLoaded = useSelector((state) => state.data.metadataLoaded);
 
   useEffect(() => {
     if (!metadataLoaded) {
