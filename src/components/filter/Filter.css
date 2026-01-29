@@ -68,6 +68,11 @@
   flex-grow: 1;
 }
 
+.filter-bottom-spacer {
+  height: 75px;
+  width: 100%;
+}
+
 .filter-content-scroll > div:not(:last-child) {
   border-bottom: 1px solid #e5e5e5;
 }

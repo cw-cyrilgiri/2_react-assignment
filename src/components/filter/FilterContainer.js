@@ -63,6 +63,7 @@ function FilterContainer() {
         <FilterAccordian title="Budget">
           <BudgetFilter />
         </FilterAccordian>
+        <div className="filter-bottom-spacer"></div>
       </div>
     </aside>
   );
