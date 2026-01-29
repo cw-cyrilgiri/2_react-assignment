@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../../hooks/useDebounce';
 import './Filter.css';
-
-const UI_MAX = 50;
+import { UI_MAX } from '../../utils/constants';
 
 function BudgetFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
