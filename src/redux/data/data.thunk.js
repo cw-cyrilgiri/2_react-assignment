@@ -1,5 +1,6 @@
 import * as types from './data.types';
 import { buildQueryParams } from '../../utils/buildQueryParams';
+import { API_BASE_URL, API_ENDPOINTS } from '../../utils/constants';
 
 export const fetchMetadata = () => async (dispatch, getState) => {
   const { metadataLoaded } = getState().data;
@@ -7,8 +8,8 @@ export const fetchMetadata = () => async (dispatch, getState) => {
 
   try {
     const [citiesRes, makesRes] = await Promise.all([
-      fetch('https://stg.carwale.com/api/cities'),
-      fetch('https://stg.carwale.com/api/v2/makes/?type=new'),
+      fetch(`${API_BASE_URL}${API_ENDPOINTS.CITIES}`),
+      fetch(`${API_BASE_URL}${API_ENDPOINTS.MAKES}`),
     ]);
 
     if (!citiesRes.ok || !makesRes.ok) {
@@ -40,8 +41,8 @@ export const fetchStocks =
     try {
       const url =
         append && nextPageUrl
-          ? `https://stg.carwale.com${nextPageUrl}`
-          : `https://stg.carwale.com/api/stocks?${buildQueryParams(searchParams)}`;
+          ? `${API_BASE_URL}${nextPageUrl}`
+          : `${API_BASE_URL}${API_ENDPOINTS.STOCKS}?${buildQueryParams(searchParams)}`;
 
       const res = await fetch(url);
       if (!res.ok) {
