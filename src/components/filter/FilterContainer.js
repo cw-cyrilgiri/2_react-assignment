@@ -52,16 +52,16 @@ function FilterContainer() {
           <FuelFilter />
         </FilterAccordian>
 
-        <FilterAccordian title="City">
-          <CityFilter cities={cities} />
-        </FilterAccordian>
-
         <FilterAccordian title="Make / Model">
           <MakeFilter makes={makes} />
         </FilterAccordian>
 
         <FilterAccordian title="Budget">
           <BudgetFilter />
+        </FilterAccordian>
+
+        <FilterAccordian title="City">
+          <CityFilter cities={cities} />
         </FilterAccordian>
         <div className="filter-bottom-spacer"></div>
       </div>
