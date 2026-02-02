@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { getArrayParam, setArrayParam } from '../../utils/query';
 import { FUEL_TYPES } from '../../utils/constants';
+import './FuelFilter.css';
 
 function FuelFilter() {
   const [searchParams, setSearchParams] = useSearchParams();

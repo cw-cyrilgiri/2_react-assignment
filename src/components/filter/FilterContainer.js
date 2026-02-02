@@ -8,7 +8,7 @@ import FuelFilter from './FuelFilter';
 import CityFilter from './CityFilter';
 import MakeFilter from './MakeFilter';
 import BudgetFilter from './BudgetFilter';
-import './Filter.css';
+import './FilterContainer.css';
 
 function FilterContainer() {
   const dispatch = useDispatch();

@@ -1,0 +1,28 @@
+.make-filter-container {
+  padding: 12px 16px;
+}
+
+.filter-list-wrapper {
+  padding: 4px 0;
+}
+
+.filter-checkbox-label {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.filter-checkbox-label input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  margin-right: 12px;
+  accent-color: #0271bc;
+  cursor: pointer;
+}
+
+.checkbox-text {
+  font-size: 14px;
+  color: #404040;
+  user-select: none;
+}

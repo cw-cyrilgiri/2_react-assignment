@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../../hooks/useDebounce';
-import './Filter.css';
+import './BudgetFilter.css';
 import { UI_MAX } from '../../utils/constants';
 
 function BudgetFilter() {

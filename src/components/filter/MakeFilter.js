@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getArrayParam, setArrayParam } from '../../utils/query';
 import { useDebounce } from '../../hooks/useDebounce';
 import FilterSearch from '../common/FilterSearch';
-import './Filter.css';
+import './MakeFilter.css';
 
 function MakeFilter({ makes = [] }) {
   const [searchParams, setSearchParams] = useSearchParams();
