@@ -13,6 +13,13 @@
   display: block;
 }
 
+.carousel-cover-image {
+  width: 100%;
+  height: 256.25px;
+  object-fit: cover;
+  display: block;
+}
+
 .carousel-btn {
   position: absolute;
   top: 50%;
