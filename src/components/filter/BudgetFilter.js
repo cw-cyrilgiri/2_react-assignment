@@ -27,11 +27,19 @@ function BudgetFilter() {
 
   useEffect(() => {
     const currentUrlBudget = `${debouncedMin}-${debouncedMax === UI_MAX ? '' : debouncedMax}`;
+    if (debouncedMin === 0 && debouncedMax === UI_MAX) {
+      if (!budgetParam) return;
+      const params = new URLSearchParams(searchParams);
+      params.delete('budget');
+      setSearchParams(params, { replace: true });
+      return;
+    }
+
     if (currentUrlBudget === budgetParam) return;
 
     const params = new URLSearchParams(searchParams);
     params.set('budget', currentUrlBudget);
-    setSearchParams(params);
+    setSearchParams(params, { replace: true });
   }, [debouncedMin, debouncedMax, setSearchParams, budgetParam]);
 
   const getPercent = (value) => Math.round((value / UI_MAX) * 100);
