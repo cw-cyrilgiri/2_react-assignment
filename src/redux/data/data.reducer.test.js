@@ -142,7 +142,7 @@ describe('Data Reducer', () => {
 
   describe('FETCH_METADATA_SUCCESS', () => {
     it('sets cities, makes, and metadataLoaded flag', () => {
-      const cities = [{ CityId: 1, CityName: 'Bangalore' }];
+      const cities = [{ cityId: 1, cityName: 'Bangalore' }];
       const makes = [{ makeId: 1, makeName: 'Toyota' }];
       const state = dataReducer(initialState, {
         type: types.FETCH_METADATA_SUCCESS,

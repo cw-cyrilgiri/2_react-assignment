@@ -9,10 +9,10 @@ export const FUEL_TYPES = [
 
 export const UI_MAX = 50;
 
-export const API_BASE_URL = 'https://stg.carwale.com';
+export const API_BASE_URL = 'http://localhost:5267';
 
 export const API_ENDPOINTS = {
   CITIES: '/api/cities',
-  MAKES: '/api/v2/makes/?type=new',
+  MAKES: '/api/makes',
   STOCKS: '/api/stocks',
 };

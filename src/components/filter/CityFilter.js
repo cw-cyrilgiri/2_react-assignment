@@ -19,7 +19,7 @@ function CityFilter({ cities = [] }) {
 
   const filteredCities = useMemo(() => {
     return cities.filter((city) =>
-      city.CityName.toLowerCase().includes(debouncedSearch.toLowerCase()),
+      city.cityName.toLowerCase().includes(debouncedSearch.toLowerCase()),
     );
   }, [debouncedSearch, cities]);
 
@@ -34,16 +34,16 @@ function CityFilter({ cities = [] }) {
       <div className="city-list-wrapper">
         {filteredCities.map((city) => (
           <label
-            key={city.CityId}
-            className={`city-pill ${selectedCity === String(city.CityId) ? 'active' : ''}`}
+            key={city.cityId}
+            className={`city-pill ${selectedCity === String(city.cityId) ? 'active' : ''}`}
           >
             <input
               type="radio"
               name="city"
-              checked={selectedCity === String(city.CityId)}
-              onChange={() => onChange(city.CityId)}
+              checked={selectedCity === String(city.cityId)}
+              onChange={() => onChange(city.cityId)}
             />
-            {city.CityName}
+            {city.cityName}
           </label>
         ))}
       </div>
