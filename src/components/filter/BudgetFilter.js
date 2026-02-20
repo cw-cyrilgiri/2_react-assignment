@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useDebounce } from '../../hooks/useDebounce';
 import './BudgetFilter.css';
 import { UI_MAX } from '../../utils/constants';
 
@@ -22,26 +21,22 @@ function BudgetFilter() {
     setMax(bMax ? Number(bMax) : UI_MAX);
   }, [budgetParam]);
 
-  const debouncedMin = useDebounce(min, 400);
-  const debouncedMax = useDebounce(max, 400);
-
-  useEffect(() => {
-    const currentUrlBudget = `${debouncedMin}-${debouncedMax === UI_MAX ? '' : debouncedMax}`;
-    if (debouncedMin === 0 && debouncedMax === UI_MAX) {
-      if (!budgetParam) return;
-      const params = new URLSearchParams(searchParams);
-      params.delete('budget');
-      setSearchParams(params);
-      return;
-    }
-
-    if (currentUrlBudget === budgetParam) return;
-
+  // The function that actually updates the URL
+  const updateUrl = (newMin, newMax) => {
     const params = new URLSearchParams(searchParams);
-    params.set('budget', currentUrlBudget);
+    
+    if (newMin === 0 && newMax === UI_MAX) {
+      params.delete('budget');
+    } else {
+      const budgetString = `${newMin}-${newMax === UI_MAX ? '' : newMax}`;
+      params.set('budget', budgetString);
+    }
+    
     setSearchParams(params, { replace: true });
-  }, [debouncedMin, debouncedMax, setSearchParams, budgetParam]);
+  };
 
+  const handleMinChange = (v) => setMin(Math.min(v, max - 1));
+  const handleMaxChange = (v) => setMax(Math.max(v, min + 1));
   const getPercent = (value) => Math.round((value / UI_MAX) * 100);
 
   return (
@@ -52,7 +47,8 @@ function BudgetFilter() {
           <input
             type="number"
             value={min}
-            onChange={(e) => setMin(Math.min(Number(e.target.value), max - 1))}
+            onChange={(e) => handleMinChange(Number(e.target.value))}
+            onBlur={() => updateUrl(min, max)} // Update URL when user clicks away
           />
         </div>
         <div className="input-group">
@@ -60,7 +56,8 @@ function BudgetFilter() {
           <input
             type="number"
             value={max}
-            onChange={(e) => setMax(Math.max(Number(e.target.value), min + 1))}
+            onChange={(e) => handleMaxChange(Number(e.target.value))}
+            onBlur={() => updateUrl(min, max)} // Update URL when user clicks away
           />
         </div>
       </div>
@@ -73,7 +70,9 @@ function BudgetFilter() {
           value={min}
           className="range-input"
           style={{ zIndex: min > UI_MAX - 10 ? '5' : '3' }}
-          onChange={(e) => setMin(Math.min(Number(e.target.value), max - 1))}
+          onChange={(e) => handleMinChange(Number(e.target.value))}
+          onMouseUp={() => updateUrl(min, max)} // Update URL when user releases slider
+          onTouchEnd={() => updateUrl(min, max)} // For mobile support
         />
         <input
           type="range"
@@ -82,7 +81,9 @@ function BudgetFilter() {
           value={max}
           className="range-input"
           style={{ zIndex: '4' }}
-          onChange={(e) => setMax(Math.max(Number(e.target.value), min + 1))}
+          onChange={(e) => handleMaxChange(Number(e.target.value))}
+          onMouseUp={() => updateUrl(min, max)} // Update URL when user releases slider
+          onTouchEnd={() => updateUrl(min, max)} // For mobile support
         />
 
         <div className="slider-base-track"></div>
