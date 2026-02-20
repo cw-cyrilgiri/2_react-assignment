@@ -21,7 +21,6 @@ function BudgetFilter() {
     setMax(bMax ? Number(bMax) : UI_MAX);
   }, [budgetParam]);
 
-  // The function that actually updates the URL
   const updateUrl = (newMin, newMax) => {
     const params = new URLSearchParams(searchParams);
     
@@ -33,6 +32,16 @@ function BudgetFilter() {
     }
     
     setSearchParams(params, { replace: true });
+  };
+
+  const handleInputKeyDown = (e) => {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault();
+    }
+    if (e.key === 'Enter') {
+      updateUrl(min, max);
+      e.target.blur();
+    }
   };
 
   const handleMinChange = (v) => setMin(Math.min(v, max - 1));
@@ -48,7 +57,9 @@ function BudgetFilter() {
             type="number"
             value={min}
             onChange={(e) => handleMinChange(Number(e.target.value))}
-            onBlur={() => updateUrl(min, max)} // Update URL when user clicks away
+            onBlur={() => updateUrl(min, max)}
+            onKeyDown={handleInputKeyDown}
+            className="no-spinner"
           />
         </div>
         <div className="input-group">
@@ -57,7 +68,9 @@ function BudgetFilter() {
             type="number"
             value={max}
             onChange={(e) => handleMaxChange(Number(e.target.value))}
-            onBlur={() => updateUrl(min, max)} // Update URL when user clicks away
+            onBlur={() => updateUrl(min, max)}
+            onKeyDown={handleInputKeyDown}
+            className="no-spinner"
           />
         </div>
       </div>
@@ -71,8 +84,8 @@ function BudgetFilter() {
           className="range-input"
           style={{ zIndex: min > UI_MAX - 10 ? '5' : '3' }}
           onChange={(e) => handleMinChange(Number(e.target.value))}
-          onMouseUp={() => updateUrl(min, max)} // Update URL when user releases slider
-          onTouchEnd={() => updateUrl(min, max)} // For mobile support
+          onMouseUp={() => updateUrl(min, max)}
+          onTouchEnd={() => updateUrl(min, max)}
         />
         <input
           type="range"
@@ -82,8 +95,8 @@ function BudgetFilter() {
           className="range-input"
           style={{ zIndex: '4' }}
           onChange={(e) => handleMaxChange(Number(e.target.value))}
-          onMouseUp={() => updateUrl(min, max)} // Update URL when user releases slider
-          onTouchEnd={() => updateUrl(min, max)} // For mobile support
+          onMouseUp={() => updateUrl(min, max)}
+          onTouchEnd={() => updateUrl(min, max)}
         />
 
         <div className="slider-base-track"></div>

@@ -85,3 +85,9 @@
   color: #0271bc;
   margin-top: 15px;
 }
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
