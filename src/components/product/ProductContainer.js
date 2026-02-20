@@ -22,22 +22,10 @@ function ProductContainer() {
   const observerRef = useRef(null);
 
   useEffect(() => {
+    window.scrollTo(0,0);
     dispatch(resetStocks());
     dispatch(fetchStocks({ append: false, searchParams }));
   }, [searchParams.toString(), dispatch]);
-
-  const sortedList = useMemo(() => {
-    const sort = searchParams.get('sort');
-    if (!sort) return stocks;
-
-    const [field, order] = sort.split('-');
-
-    return [...stocks].sort((a, b) => {
-      const aVal = Number(a[field]) || 0;
-      const bVal = Number(b[field]) || 0;
-      return order === 'asc' ? aVal - bVal : bVal - aVal;
-    });
-  }, [stocks, searchParams]);
 
   const lastItemRef = useCallback(
     (node) => {
@@ -62,12 +50,11 @@ function ProductContainer() {
     <div className="ProductContainer" style={{ position: 'relative' }}>
       <SortBar />
 
-      {/* Show full overlay spinner ONLY during initial fetch/filter change */}
-      {loading && sortedList.length === 0 && <Spinner />}
+      {loading && stocks.length === 0 && <Spinner />}
 
       <div className="PC-container">
-        {sortedList.map((car, index) => {
-          const isLast = index === sortedList.length - 1;
+        {stocks.map((car, index) => {
+          const isLast = index === stocks.length - 1;
           return (
             <div key={car.profileId} ref={isLast ? lastItemRef : null}>
               <CarCard car={car} />
@@ -77,12 +64,11 @@ function ProductContainer() {
       </div>
 
       {Stockerror && <Error error={Stockerror} />}
-      {/* Show simple text loader at the bottom for Infinite Scroll */}
-      {loading && sortedList.length > 0 && (
+      {loading && stocks.length > 0 && (
         <p className="loading-bottom">Loading more cars...</p>
       )}
 
-      {!loading && sortedList.length === 0 && (
+      {!loading && stocks.length === 0 && (
         <p className="empty">No cars found</p>
       )}
     </div>

@@ -17,6 +17,10 @@ export const buildQueryParams = (searchParams) => {
     params.budget = searchParams.get('budget');
   }
 
+  if (searchParams.get('sort')) {
+    params.sort = searchParams.get('sort');
+  }
+
   return Object.entries(params)
     .map(([k, v]) => `${k}=${v}`)
     .join('&');
