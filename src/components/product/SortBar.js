@@ -3,10 +3,10 @@ import './SortBar.css';
 
 const SORT_OPTIONS = [
   { label: 'Best Match', value: '' },
-  { label: 'Price - Low to High', value: 'priceNumeric-asc' },
-  { label: 'Price - High to Low', value: 'priceNumeric-desc' },
-  { label: 'Year - Newest to Oldest', value: 'makeYear-desc' },
-  { label: 'Year - Oldest to Newest', value: 'makeYear-asc' },
+  { label: 'Price - Low to High', value: 'price-asc' },
+  { label: 'Price - High to Low', value: 'price-desc' },
+  { label: 'Year - Newest to Oldest', value: 'year-desc' },
+  { label: 'Year - Oldest to Newest', value: 'year-asc' },
 ];
 
 function SortBar() {
