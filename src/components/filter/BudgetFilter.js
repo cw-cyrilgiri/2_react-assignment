@@ -31,7 +31,7 @@ function BudgetFilter() {
       if (!budgetParam) return;
       const params = new URLSearchParams(searchParams);
       params.delete('budget');
-      setSearchParams(params, { replace: true });
+      setSearchParams(params);
       return;
     }
 
